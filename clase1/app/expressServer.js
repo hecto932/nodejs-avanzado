@@ -19,13 +19,16 @@ var ExpressServer = function(config){
     //DONDE VAN A ENCONTRAR LOS TEMPLATES
     this.expressServer.set('views', __dirname + '/website/views/templates');
 
+    //CAMBIO LAS LLAVES
+    //swig.setDefaults({varControls: ['[[',']]']});
+
 	this.expressServer.get('/article/save/', function(req, res, next){
-		res.render('article_save', {nombre: 'diego'});
+		res.render('article_save', {nombre: 'Hector'});
 		//res.send('Hello from article save');
 	});
 
 	this.expressServer.get('/article/list/', function(req, res, next){
-		res.send('Hello from article list');
+		res.render('article_list', {});
 	});
 };
 

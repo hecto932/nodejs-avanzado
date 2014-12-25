@@ -1,4 +1,5 @@
-var express = require('express'),
+var env = process.env.NODE_ENV || 'production',
+	express = require('express'),
 	swig = require('swig'),
 	middlewares = require('./middlewares/admin');
 
@@ -21,6 +22,13 @@ var ExpressServer = function(config){
 
     //CAMBIO LAS LLAVES
     //swig.setDefaults({varControls: ['[[',']]']});
+
+    if(env == 'development')
+    {
+    	console.log('OK NO HAY CACHE');
+    	this.expressServer.set('view cache', false);
+    	swig.setDefaults({cache: false});
+    }
 
 	this.expressServer.get('/article/save/', function(req, res, next){
 		res.render('article_save', {nombre: 'Hector'});

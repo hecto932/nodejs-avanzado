@@ -5,8 +5,13 @@ var Article = function(conf){
 	}
 };
 
+Article.prototype.post_save = function(req, res, next){
+	console.log(req.body);
+	debugger;
+}
+
 Article.prototype.get_add = function(req, res, next){
-	res.render('article_save', {nombre: 'add'});
+	res.render('article_add', {nombre: 'add'});
 };
 
 Article.prototype.get_edit_data = function(req, res, next){

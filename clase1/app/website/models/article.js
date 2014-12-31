@@ -3,8 +3,10 @@ var modelArticle = require('./schema/article'),
 
 var Article = function(conf){
 	this.conf = conf || {};
-	this.model = modelArticle;
+	//this.model = modelArticle;
 }
+
+Article.prototype.model = modelArticle;
 
 Article.prototype.save = function(data,callback){
     this.model.findOneAndUpdate({
@@ -13,7 +15,7 @@ Article.prototype.save = function(data,callback){
     },data,{upsert:true}).exec(function(err,doc){
         callback(doc);
     });
-}
+};
 
 Article.prototype.get = function(query,callback){
 	this.model.find(query).exec(function(err,doc){

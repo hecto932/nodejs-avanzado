@@ -2,7 +2,7 @@ var env = process.env.NODE_ENV || 'production',
 	express = require('express'),
 	swig = require('swig'),
 	bodyParser = require('body-parser'),
-	middlewares = require('./middlewares/admin')
+	middlewares = require('./middlewares/admin'),
 	router = require('./website/router');
 
 var ExpressServer = function(config){
@@ -10,8 +10,10 @@ var ExpressServer = function(config){
 
 	this.expressServer = express();
 
+	
+
 	//MIDDLEWARES
-	this.expressServer.use(bodyParser.urlencoded({extended: true}));
+	this.expressServer.use(bodyParser.urlencoded({ extended: true }));
 	for(var middleware in middlewares){
         this.expressServer.use(middlewares[middleware]);
     }
